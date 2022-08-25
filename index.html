@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="esp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Inventario</title>
+</head>
+
+<body class="body">
+    <header class="titulo">
+        <h1>Inventario</h1>
+    </header>
+
+    <main>
+
+        
+        <form>
+            <h2>Buscar producto</h2>
+            <p> Producto: <input type="text" id="pro" placeholder="nombre"> </p>
+            <input type="button" id="buscar" value="Buscar">
+            <input type="reset">
+        </form>
+
+        <br>
+
+        <form>
+            <h2>Buscar producto con mayor stock</h2>
+            <p> Stock: <input type="number" id="numero" placeholder="numero"> </p>
+            <input type="button" id="cantidad" value="encontrar">
+            <input type="reset">
+        </form>
+
+        <br>
+
+
+        <form id="formulario">
+            <label for="producto">Producto</label>
+            <input type="text" placeholder="Nombre del producto" name="producto" id="producto">
+            <label for="precio">Precio</label>
+            <input type="number" placeholder="ingresar el precio 100" name="precio" id="precio">
+            <label for="stock">Stock</label>
+            <input type="number" name="stock" id="stock" placeholder="ingresar stock">
+            <label for="stock">Vencimiento</label>
+            <input type="text" name="vto" id="vto" placeholder="00/00/00">
+            <input type="submit" value="Enviar">
+        </form>
+        <div>
+            <ul id="productos">
+
+            </ul>
+        </div>
+        
+
+
+    </main>
+
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
