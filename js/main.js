@@ -1,15 +1,26 @@
 const formulario = document.getElementById('formulario');
-const contenedorProductos = document.getElementById('productos');
+const contenedorProductos = document.getElementById('Imprimir');
+const eliminarTodo=document.getElementById("borrarTodo");
 let productos = [];
+
+
 
 if (recuperarStorage('productos')) {
     productos = recuperarStorage('productos');
     mostrarProductos(productos);
 }
 
+function iliminarStorage(clave, valor) {
+    localStorage.clear(clave, valor);
+}
+
+eliminarTodo.addEventListener("click",() => {
+    iliminarStorage();
+});
+
 class Producto {
     constructor(producto, precio, stock, vto) {
-        this.producto = producto;
+        this.producto =producto;
         this.precio = parseFloat(precio);
         this.stock = parseInt(stock);
         this.vto = vto;
@@ -38,7 +49,6 @@ function verStock(){
     return buscarStock;
 }
 
-
 function obtenerDatos(e) {
     e.preventDefault();
     const producto = document.getElementById('producto').value;
@@ -64,7 +74,7 @@ function resetear() {
     document.getElementById('vto').value = '';
 }
 
-function mostrarProductos(productos) {
+function mostrarProductos(Imprimir) {
     contenedorProductos.innerHTML = '';
     productos.forEach(element => {
         const {
@@ -82,7 +92,7 @@ function mostrarProductos(productos) {
             <td>${producto}</td>
             <td>$${precio}</td>
             <td>${stock}</td>
-            <td>${vto}</td>
+            <td style="color:red;">${vto}</td>
             </tr>
 
          </table>`;
@@ -90,10 +100,13 @@ function mostrarProductos(productos) {
         });
 }
 
+
+
 const verProducto = document.getElementById("buscar");
 verProducto.addEventListener("click", () => {
     buscarArticulo();
     console.log(buscarArticulo());
+
 });
 
 const cantidadStock = document.getElementById("cantidad");
@@ -106,162 +119,3 @@ cantidadStock.addEventListener("click", () => {
 });
 
 formulario.addEventListener('submit', obtenerDatos);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// recuperarLocalStore();
-
-// function recuperarLocalStore() {
-
-//     let recuperarProductos = JSON.parse(localStorage.getItem("articulos"));
-//     if (recuperarProductos) {
-
-// console.log(recuperarProductos);
-
-//     } else {
-//         console.log("no hay nada")
-//     }
-
-// }
-
-
-
-// function guaradarLocal(nuevoProducto) {
-
-//     productos.push(nuevoProducto);
-
-//     localStorage.setItem("articulos", JSON.stringify(productos));
-// }
-
-
-
-
-
-
-
-// const productos = [];
-
-
-// function modificarStock(stock) {
-//     let buscarStock = productos.filter((el) => el.stock >= buscarStock);
-//     // return stock;
-//     alert(buscarStock);
-// }
-
-
-// function buscarArticulo() {
-
-//     let buscarProducto = document.getElementById("pro").value;
-//     buscarProducto = productos.find((el) => el.nombre == buscarProducto);
-//     return buscarProducto;
-
-// }
-
-// function verStock() {
-//     let buscarStock = document.getElementById("numero").value;
-//     buscarStock = productos.filter((el) => el.stock >= buscarStock);
-//     return buscarStock;
-// }
-
-// class Producto {
-//     constructor(nombre, precio, stock, vencimiento) {
-//         this.nombre = nombre;
-//         this.precio = parseFloat(precio);
-//         this.stock = parseInt(stock);
-//         this.vencimiento = vencimiento;
-
-//     }
-
-// }
-
-// function escribirLosProductos() {
-
-//     const nombre = document.getElementById("nombre").value;
-
-//     document.querySelector(".Producto").innerHTML += `<li>${nombre} </li>`;
-
-//     const precio = document.getElementById("precio").value;
-//     document.querySelector(".Precio").innerHTML += `<li>${precio} </li>`;
-
-//     const stock = document.getElementById("stock").value;
-//     document.querySelector(".Stock").innerHTML += `<li>${stock} </li>`;
-
-//     const vencimiento = document.getElementById("vto").value;
-//     document.querySelector(".Vencimiento").innerHTML += `<li>${vencimiento} </li>`;
-
-
-//     const nuevoProducto = new Producto(nombre, precio, stock, vencimiento);
-
-//     guaradarLocal(nuevoProducto);
-
-
-// }
-
-
-// const guardar = document.getElementById("Guardar");
-// guardar.addEventListener("click", () => {
-
-//     escribirLosProductos();
-
-// });
-
-// const verProducto = document.getElementById("buscar");
-// verProducto.addEventListener("click", () => {
-
-//     buscarArticulo();
-
-//     console.log(buscarArticulo());
-
-//     modificarStock();
-//     console.log(modificarStock);
-
-// });
-
-
-// const cantidadStock = document.getElementById("cantidad");
-// cantidadStock.addEventListener("click", () => {
-
-//     verStock();
-
-//     console.log(verStock());
-
-// });
-
-
-// const ver = document.getElementById("imprimir");
-// ver.addEventListener("click", () => {
-
-//     window.print();
-
-// });

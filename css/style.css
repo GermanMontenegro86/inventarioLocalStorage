@@ -20,6 +20,78 @@
     color: white;
 }
 
-#pro{
-    margin-bottom: 30px;
+.adicionales{
+    display: flex;
+}
+
+.BuscarProducto{
+    margin-top: -72px;
+    transform: translate(26px, 1px);
+}
+
+.BuscarProducto h5,p{
+    text-align: center;
+}
+
+.BuscarProducto input{
+    text-align: center;
+}
+
+.btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    transform: translate(15px, -2px);
+}
+
+.BuscarStock{
+    margin-top: -72px;
+    transform: translate(-22px, 3px);
+}
+
+.BuscarStock{
+    text-align: center;
+}
+
+.BuscarStock input{
+    text-align: center;
+}
+
+.btn2{
+    transform: translate(5px, 8px);
+}
+
+.btn3{
+    margin-top: 30px;
+}
+
+#formulario{
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#formulario input{
+    text-align: center;
+    width: 200px;
+    margin-left: 111px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+#formulario label{
+    text-align: center;
+
+}
+
+#Imprimir{
+    transform: translate(92px, -19px);
+}
+
+#borrarTodo{
+    margin-top: 53px;
+    margin-bottom: 20px;
 }

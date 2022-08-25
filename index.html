@@ -16,24 +16,29 @@
 
     <main>
 
-        
-        <form>
-            <h2>Buscar producto</h2>
-            <p> Producto: <input type="text" id="pro" placeholder="nombre"> </p>
-            <input type="button" id="buscar" value="Buscar">
-            <input type="reset">
-        </form>
+        <div class="adicionales">
+            <form class="BuscarProducto">
+                <h5>Buscar producto</h5>
+                <p> Producto: <input type="text" id="pro" placeholder="nombre"> </p>
+                <input class="btn" type="button" id="buscar" value="Buscar">
+                <input class="btn" type="reset">
+            </form>
 
-        <br>
+            <div id="encontrado"></div>
 
-        <form>
-            <h2>Buscar producto con mayor stock</h2>
-            <p> Stock: <input type="number" id="numero" placeholder="numero"> </p>
-            <input type="button" id="cantidad" value="encontrar">
-            <input type="reset">
-        </form>
+            <BUtton id="borrarTodo">BORRAR TODO</BUtton>
 
-        <br>
+
+            <form class="BuscarStock">
+                <h5>Buscar producto con mayor stock</h5>
+                <p><input type="number" id="numero" placeholder="numero"> </p>
+                <input class="btn2" type="button" id="cantidad" value="encontrar">
+                <input class="btn2" type="reset">
+            </form>
+
+
+        </div>
+
 
 
         <form id="formulario">
@@ -45,14 +50,14 @@
             <input type="number" name="stock" id="stock" placeholder="ingresar stock">
             <label for="stock">Vencimiento</label>
             <input type="text" name="vto" id="vto" placeholder="00/00/00">
-            <input type="submit" value="Enviar">
+            <input class="btn3" type="submit" value="Enviar">
         </form>
         <div>
-            <ul id="productos">
+            <ul id="Imprimir">
 
             </ul>
         </div>
-        
+
 
 
     </main>
