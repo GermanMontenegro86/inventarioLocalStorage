@@ -56,10 +56,10 @@ function obtenerDatos(e) {
     const nuevoProducto = new Producto(producto, precio, stock, vto);
     productos.push(nuevoProducto);
 
-    guardarStorage("productos", productos);
+    guardarStorage("articulos",productos);
     resetear();
 
-    mostrarProductos(productos);
+    mostrarProductos( obtenerProductos);
 }
 
 function resetear() {
@@ -73,11 +73,7 @@ function mostrarProductos() {
     contenedorProductos.innerHTML = '';
     productos.forEach(element => {
         const {
-            producto,
-            precio,
-            stock,
-            vto
-        } = element;
+            producto,precio,stock,vto} = element;
         contenedorProductos.innerHTML += `
             <table>
             <tr>
@@ -114,9 +110,9 @@ cantidadStock.addEventListener("click", () => {
 
 });
 
-if (recuperarStorage('productos')) {
-    productos = recuperarStorage('productos');
-    mostrarProductos(productos);
+if (recuperarStorage('articulos')) {
+   obtenerProductos = recuperarStorage('articulos');
+    mostrarProductos( obtenerProductos);
 }
 
 
