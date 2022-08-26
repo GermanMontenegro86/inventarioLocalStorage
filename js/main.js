@@ -2,7 +2,7 @@ let productos = [];
 
 const formulario = document.getElementById('formulario');
 
-const contenedorProductos = document.getElementById('Imprimir');
+const contenedorProductos = document.getElementById('imprimirProductos');
 
 const eliminarTodo = document.getElementById("borrarTodo");
 
@@ -59,7 +59,7 @@ function obtenerDatos(e) {
     guardarStorage("articulos",productos);
     resetear();
 
-    mostrarProductos( obtenerProductos);
+    mostrarProductos(productos);
 }
 
 function resetear() {
@@ -111,8 +111,8 @@ cantidadStock.addEventListener("click", () => {
 });
 
 if (recuperarStorage('articulos')) {
-   obtenerProductos = recuperarStorage('articulos');
-    mostrarProductos( obtenerProductos);
+   productos = recuperarStorage('articulos');
+    mostrarProductos(productos);
 }
 
 
