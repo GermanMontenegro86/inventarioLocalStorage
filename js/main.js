@@ -1,32 +1,27 @@
-const formulario = document.getElementById('formulario');
-const contenedorProductos = document.getElementById('Imprimir');
-const eliminarTodo=document.getElementById("borrarTodo");
 let productos = [];
 
+const formulario = document.getElementById('formulario');
 
+const contenedorProductos = document.getElementById('Imprimir');
 
-if (recuperarStorage('productos')) {
-    productos = recuperarStorage('productos');
-    mostrarProductos(productos);
-}
+const eliminarTodo = document.getElementById("borrarTodo");
 
-function iliminarStorage(clave, valor) {
-    localStorage.clear(clave, valor);
-}
+const verProducto = document.getElementById("buscar");
 
-eliminarTodo.addEventListener("click",() => {
-    iliminarStorage();
-});
+const cantidadStock = document.getElementById("cantidad");
 
 class Producto {
     constructor(producto, precio, stock, vto) {
-        this.producto =producto;
+        this.producto = producto;
         this.precio = parseFloat(precio);
         this.stock = parseInt(stock);
         this.vto = vto;
     }
 }
 
+function iliminarStorage(clave, valor) {
+    localStorage.clear(clave, valor);
+}
 function guardarStorage(clave, valor) {
     localStorage.setItem(clave, JSON.stringify(valor));
 }
@@ -35,7 +30,7 @@ function recuperarStorage(clave) {
     return JSON.parse(localStorage.getItem(clave));
 }
 
-function buscarArticulo(){
+function buscarArticulo() {
 
     let buscarProducto = document.getElementById("pro").value;
     buscarProducto = productos.find((el) => el.producto == buscarProducto);
@@ -43,7 +38,7 @@ function buscarArticulo(){
 
 }
 
-function verStock(){
+function verStock() {
     let buscarStock = document.getElementById("numero").value;
     buscarStock = productos.filter((el) => el.stock >= buscarStock);
     return buscarStock;
@@ -74,12 +69,16 @@ function resetear() {
     document.getElementById('vto').value = '';
 }
 
-function mostrarProductos(Imprimir) {
+function mostrarProductos() {
     contenedorProductos.innerHTML = '';
     productos.forEach(element => {
         const {
-            producto,precio,stock, vto} = element;
-            contenedorProductos.innerHTML += `
+            producto,
+            precio,
+            stock,
+            vto
+        } = element;
+        contenedorProductos.innerHTML += `
             <table>
             <tr>
             <td><strong>Producto</strong></td>
@@ -96,26 +95,33 @@ function mostrarProductos(Imprimir) {
             </tr>
 
          </table>`;
-         
-        });
+
+    });
 }
 
 
-
-const verProducto = document.getElementById("buscar");
 verProducto.addEventListener("click", () => {
     buscarArticulo();
     console.log(buscarArticulo());
-
 });
 
-const cantidadStock = document.getElementById("cantidad");
+
 cantidadStock.addEventListener("click", () => {
-    
+
     verStock();
 
     console.log(verStock());
 
+});
+
+if (recuperarStorage('productos')) {
+    productos = recuperarStorage('productos');
+    mostrarProductos(productos);
+}
+
+
+eliminarTodo.addEventListener("click", () => {
+    iliminarStorage();
 });
 
 formulario.addEventListener('submit', obtenerDatos);
