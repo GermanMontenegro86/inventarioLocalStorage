@@ -1,97 +1,56 @@
-* {
+*{
     margin: 0;
     padding: 0;
-}
-
-.body {
-    background-image: url("https://media.istockphoto.com/vectors/abstract-orange-vector-background-with-stripes-can-be-used-for-cover-vector-id1156933854?k=20&m=1156933854&s=612x612&w=0&h=fxlp-ZvxJUfVtmOUr97qTz_7PDOgm5OfZO_od9BOLrw=");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.titulo {
-    background: linear-gradient(90deg, rgba(20, 20, 20, 1) 0%, rgba(14, 14, 14, 0.8687850140056023) 50%, rgba(25, 25, 24, 1) 100%);
-    text-align: center;
-    margin-bottom: 100px;
-    font-size: 2em;
-}
-
-.titulo h1 {
-    color: white;
-}
-
-.adicionales{
+    box-sizing: border-box;
+  }
+  
+  html, body{
+    width: 100%;
+    height: 100%;
+  }
+  
+  header{
+    width: 100%;
+    height: 15vh;
+    padding: 5px;
     display: flex;
-}
-
-.BuscarProducto{
-    margin-top: -72px;
-    transform: translate(26px, 1px);
-}
-
-.BuscarProducto h5,p{
-    text-align: center;
-}
-
-.BuscarProducto input{
-    text-align: center;
-}
-
-.btn{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    transform: translate(15px, -2px);
-}
-
-.BuscarStock{
-    margin-top: -72px;
-    transform: translate(-22px, 3px);
-}
-
-.BuscarStock{
-    text-align: center;
-}
-
-.BuscarStock input{
-    text-align: center;
-}
-
-.btn2{
-    transform: translate(5px, 8px);
-}
-
-.btn3{
-    margin-top: 30px;
-}
-
-#formulario{
-    display: flex;
-    margin-bottom: 50px;
-    justify-content: space-between;
+    justify-content:space-between;
+    align-items: center;
+    background-color: black;
+  }
+  
+  header img{
+    height: 100%;
+  }
+  
+  main{
     flex-direction: column;
-}
-
-#formulario input{
-    text-align: center;
-    width: 200px;
-    margin-left: 111px;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  main div{
+    max-width: 100%;
+  }
+  
+  #container-inputs{
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-
-
-#formulario label{
+    gap: 10px;
+    width: 25%;
+  }
+  
+  #container-inputs > div{
+    display: flex;
+    gap: 10px;
+  }
+  
+  input{
+    padding: 5px;
+  }
+  
+  table{
+    width: 70% !important;
     text-align: center;
-
-}
-
-#Imprimir{
-    transform: translate(92px, -19px);
-}
-
-#borrarTodo{
-    margin-top: 53px;
-    margin-bottom: 20px;
-}
+  }

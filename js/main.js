@@ -1,14 +1,12 @@
-let productos = [];
+let arrayProductos = [];
 
-const formulario = document.getElementById('formulario');
+const nombreProducto = document.querySelector('#nombre-producto');
 
-const contenedorProductos = document.getElementById('imprimirProductos');
+const filtrar = document.querySelector('#filtrar');
 
-const eliminarTodo = document.getElementById("borrarTodo");
+const eliminar = document.getElementById("borrar");
 
-const verProducto = document.getElementById("buscar");
-
-const cantidadStock = document.getElementById("cantidad");
+const volver = document.getElementById("volver");
 
 class Producto {
     constructor(producto, precio, stock, vto) {
@@ -19,29 +17,29 @@ class Producto {
     }
 }
 
-function iliminarStorage(clave, valor) {
-    localStorage.clear(clave, valor);
-}
-function guardarStorage(clave, valor) {
-    localStorage.setItem(clave, JSON.stringify(valor));
-}
 
-function recuperarStorage(clave) {
-    return JSON.parse(localStorage.getItem(clave));
-}
+function renderizarHtml(array) {
+    const tbody = document.querySelector('tbody');
 
-function buscarArticulo() {
+    tbody.innerHTML = '';
 
-    let buscarProducto = document.getElementById("pro").value;
-    buscarProducto = productos.find((el) => el.producto == buscarProducto);
-    return buscarProducto;
+    // if (array.length === 0) {
+    //     tbody.innerHTML = "<h1 class='mt-5'>No se encontraron resultados</h1>"
+    // }
 
-}
+    array.length === 0 ?  tbody.innerHTML = "<h1 class='mt-5'>No tenes este producto en tu inventario</h1>" : 
 
-function verStock() {
-    let buscarStock = document.getElementById("numero").value;
-    buscarStock = productos.filter((el) => el.stock >= buscarStock);
-    return buscarStock;
+    array.forEach(({
+        producto,precio,stock,vto}) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = 
+        `<td>${producto}</td>
+         <td>$${precio}</td>
+         <td>${stock}</td>
+         <td>${vto}</td>
+         `
+        tbody.appendChild(tr);
+    });
 }
 
 function obtenerDatos(e) {
@@ -50,16 +48,13 @@ function obtenerDatos(e) {
     const precio = document.getElementById('precio').value;
     const stock = document.getElementById('stock').value;
     const vto = document.getElementById('vto').value;
-
-    // console.log(producto, precio, stock,vto);
-
     const nuevoProducto = new Producto(producto, precio, stock, vto);
-    productos.push(nuevoProducto);
-
-    guardarStorage("articulos",productos);
+    arrayProductos.push(nuevoProducto);
+    renderizarHtml(arrayProductos);
+    guardarStorage("articulos", arrayProductos);
     resetear();
 
-    mostrarProductos(productos);
+
 }
 
 function resetear() {
@@ -69,55 +64,47 @@ function resetear() {
     document.getElementById('vto').value = '';
 }
 
-function mostrarProductos() {
-    contenedorProductos.innerHTML = '';
-    productos.forEach(element => {
-        const {
-            producto,precio,stock,vto} = element;
-        contenedorProductos.innerHTML += `
-            <table>
-            <tr>
-            <td><strong>Producto</strong></td>
-            <td><strong>Precio</strong></td>
-            <td><strong>Stock</strong></td>
-            <td><strong>Vencimiento</strong></td>
-            </tr>
-
-            <tr>
-            <td>${producto}</td>
-            <td>$${precio}</td>
-            <td>${stock}</td>
-            <td style="color:red;">${vto}</td>
-            </tr>
-
-         </table>`;
-
-    });
+function guardarStorage(clave, valor) {
+    localStorage.setItem(clave, JSON.stringify(valor));
 }
 
-
-verProducto.addEventListener("click", () => {
-    buscarArticulo();
-    console.log(buscarArticulo());
+function recuperarStorage(clave) {
+    return JSON.parse(localStorage.getItem(clave));
+}
+nombreProducto.addEventListener('input', () => {
+    const encontrados = arrayProductos.filter(({
+        producto
+    }) => {
+        return producto.toUpperCase().includes(nombreProducto.value.toUpperCase());
+    });
+    renderizarHtml(encontrados);
 });
 
+filtrar.addEventListener('click', () => {
+    const desde = document.querySelector('#desde').value;
+    const hasta = document.querySelector('#hasta').value;
 
-cantidadStock.addEventListener("click", () => {
+    const encontrados = arrayProductos.filter(({
+        precio
+    }) => {
+        return Number(precio) >= desde && Number(precio) <= hasta;
+    });
+    renderizarHtml(encontrados);
+  
 
-    verStock();
-
-    console.log(verStock());
-
-});
+})
 
 if (recuperarStorage('articulos')) {
-   productos = recuperarStorage('articulos');
-    mostrarProductos(productos);
+    arrayProductos = recuperarStorage('articulos');
+    renderizarHtml(arrayProductos);
 }
 
-
-eliminarTodo.addEventListener("click", () => {
-    iliminarStorage();
-});
+volver.addEventListener("click", () => {
+    document.location.reload();
+})
 
 formulario.addEventListener('submit', obtenerDatos);
+
+
+
+
