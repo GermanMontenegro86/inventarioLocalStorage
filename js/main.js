@@ -17,6 +17,10 @@ class Producto {
     }
 }
 
+function borrarTodo(){
+    localStorage.clear();
+    renderizarHtml();
+}
 
 function renderizarHtml(array) {
     const tbody = document.querySelector('tbody');
@@ -104,6 +108,24 @@ volver.addEventListener("click", () => {
 })
 
 formulario.addEventListener('submit', obtenerDatos);
+
+eliminar.addEventListener("click", ()=>{
+     Swal.fire({
+        title: 'Eliminar todo',
+        text: '¿Está seguro de eliminar todo?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'No, no quiero',
+        backdrop: '#66f4ae22'
+    }).then((result)=>{
+    if(result.isConfirmed){
+       borrarTodo();
+       
+    }
+    }) 
+
+});
 
 
 
