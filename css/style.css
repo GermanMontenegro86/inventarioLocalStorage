@@ -21,6 +21,7 @@
   
   header img{
     height: 100%;
+    width: 100vw;
   }
   
   main{
@@ -54,3 +55,34 @@
     width: 70% !important;
     text-align: center;
   }
+
+  #sacar{
+    transform: translate(110px, 10px);
+  }
+
+  #primerInput{
+    transform: translate(93px, 10px);
+  }
+
+  #primerLabel{
+    transform: translate(49px, 0px);
+  }
+
+  #container-inputs{
+    width: 100vw;
+  }
+
+  #container-inputs button{
+    transform: translate(-295px, 48px);
+  }
+
+  #borrar{
+    transform: translate(-141px, -321px);
+  }
+
+  #formulario{
+    display: flex;
+    flex-direction: column;
+  }
+
+ 

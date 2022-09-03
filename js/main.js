@@ -8,6 +8,27 @@ const eliminar = document.getElementById("borrar");
 
 const volver = document.getElementById("volver");
 
+const sacar = document.getElementById("sacar");
+
+function productoSacar() {
+
+    
+    buscado = document.getElementsByName("prod")[0].value.toLowerCase();
+
+    const index = arrayProductos.findIndex(x => x.producto === buscado);
+    if(index >= 0 ){
+        arrayProductos.splice(index, 1);
+        guardarStorage("articulos", arrayProductos)
+    }
+
+}
+
+sacar.addEventListener("click", () => {
+    productoSacar();
+
+
+})
+
 class Producto {
     constructor(producto, precio, stock, vto) {
         this.producto = producto;
@@ -17,7 +38,7 @@ class Producto {
     }
 }
 
-function borrarTodo(){
+function borrarTodo() {
     localStorage.clear();
     renderizarHtml();
 }
@@ -31,24 +52,28 @@ function renderizarHtml(array) {
     //     tbody.innerHTML = "<h1 class='mt-5'>No se encontraron resultados</h1>"
     // }
 
-    array.length === 0 ?  tbody.innerHTML = "<h1 class='mt-5'>No tenes este producto en tu inventario</h1>" : 
+    array.length === 0 ? tbody.innerHTML = "<h1 class='mt-5'>No tenes este producto en tu inventario</h1>" :
 
-    array.forEach(({
-        producto,precio,stock,vto}) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = 
-        `<td>${producto}</td>
+        array.forEach(({
+            producto,
+            precio,
+            stock,
+            vto
+        }) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML =
+                `<td>${producto}</td>
          <td>$${precio}</td>
          <td>${stock}</td>
          <td>${vto}</td>
          `
-        tbody.appendChild(tr);
-    });
+            tbody.appendChild(tr);
+        });
 }
 
 function obtenerDatos(e) {
     e.preventDefault();
-    const producto = document.getElementById('producto').value;
+    const producto = document.getElementById('producto').value.toLowerCase();
     const precio = document.getElementById('precio').value;
     const stock = document.getElementById('stock').value;
     const vto = document.getElementById('vto').value;
@@ -94,7 +119,7 @@ filtrar.addEventListener('click', () => {
         return Number(precio) >= desde && Number(precio) <= hasta;
     });
     renderizarHtml(encontrados);
-  
+
 
 })
 
@@ -109,8 +134,8 @@ volver.addEventListener("click", () => {
 
 formulario.addEventListener('submit', obtenerDatos);
 
-eliminar.addEventListener("click", ()=>{
-     Swal.fire({
+eliminar.addEventListener("click", () => {
+    Swal.fire({
         title: 'Eliminar todo',
         text: '¿Está seguro de eliminar todo?',
         icon: 'warning',
@@ -118,15 +143,11 @@ eliminar.addEventListener("click", ()=>{
         confirmButtonText: 'Sí, seguro',
         cancelButtonText: 'No, no quiero',
         backdrop: '#66f4ae22'
-    }).then((result)=>{
-    if(result.isConfirmed){
-       borrarTodo();
-       
-    }
-    }) 
+    }).then((result) => {
+        if (result.isConfirmed) {
+            borrarTodo();
+
+        }
+    })
 
 });
-
-
-
-
