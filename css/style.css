@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+p{
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: sans-serif;
+ 
+}
+
+label{
+  font-size: 1.5em;
+  font-family: serif;
+}
+
+input{
+  background-color:#0ae1d773
+}
+
 html,
 body {
   width: 100%;
@@ -35,17 +51,20 @@ main div {
   max-width: 100%;
 }
 
+
 #container-inputs {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   gap: 10px;
   width: 25%;
+  
 }
 
-#container-inputs>div {
+#container-inputs div {
   display: flex;
   gap: 10px;
+  
 }
 
 input {
@@ -57,12 +76,12 @@ table {
   text-align: center;
 }
 
-#sacar {
-  transform: translate(110px, 10px);
+.btn2, .btn3{
+  margin-top: 10px;
 }
 
 #primerInput {
-  transform: translate(93px, 10px);
+ text-align: center;
 }
 
 #primerLabel {
@@ -70,16 +89,14 @@ table {
 }
 
 #container-inputs {
-  width: 100vw;
+  width: 50vw;
+  margin-left: -196PX;
 }
 
 #container-inputs button {
   transform: translate(-295px, 48px);
 }
 
-#borrar {
-  transform: translate(133px, -10px);
-}
 
 #formulario {
   display: flex;
@@ -87,6 +104,3 @@ table {
   margin-top: 38px;
 }
 
-#ejemplo {
-  transform: translate(180px, -39px);
-}
