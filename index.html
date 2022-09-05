@@ -19,29 +19,33 @@
 
     <main class="d-flex justify-content-center">
 
+        <div>
+            <p>Para ver como funciona la aplicacion hacer un click en boton "Ver ejemplo"</p>
+            <button id="ejemplo">Ver ejemplo</button>
+        </div>
+
+        <div>
+            <p>Con este boton borra todo los productos cargados</p>
+            <button id="borrar">Borrar todo</button>
+        </div>
+
         <form>
             <label id="primerLabel">Escribir nombre del producto para eliminar</label>
             <input id="primerInput" type="text" name="prod" placeholder="Producto a eliminar">
-            <input type="submit" id="sacar" value="Borarr">
-            
+            <input type="submit" id="sacar" value="Eliminar">
+
         </form>
-       
-         
-       
-        
+
 
         <div id="container-inputs">
             <input id="nombre-producto" type="text" placeholder="Buscar producto por el nombre">
             <div>
-                <input id="desde" type="number" placeholder="Desde $ (pesos)">
-                <input id="hasta" type="number" placeholder="Hasta $ (pesos)">
+                <input id="desde" type="number" placeholder="Stock desde">
+                <input id="hasta" type="number" placeholder="Stock hasta">
                 <button id="filtrar" class="btn btn-success">Buscar</button>
                 <button id="volver" class="btn btn-success">volver</button>
             </div>
         </div>
-
-        <button id="borrar">Borrar todo</button>
-
 
         <form id="formulario">
             <label for="producto">Producto</label>
@@ -51,7 +55,7 @@
             <label for="stock">Stock</label>
             <input type="number" name="stock" id="stock" placeholder="ingresar stock">
             <label for="stock">Vencimiento</label>
-            <input type="date" name="vto" id="vto" placeholder="00/00/00">
+            <input type="date" name="vto" id="vto">
             <input class="btn3" type="submit" value="Enviar">
         </form>
 

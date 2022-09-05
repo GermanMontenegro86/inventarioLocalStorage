@@ -1,88 +1,92 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html, body{
-    width: 100%;
-    height: 100%;
-  }
-  
-  header{
-    width: 100%;
-    height: 15vh;
-    padding: 5px;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    background-color: black;
-  }
-  
-  header img{
-    height: 100%;
-    width: 100vw;
-  }
-  
-  main{
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  main div{
-    max-width: 100%;
-  }
-  
-  #container-inputs{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    gap: 10px;
-    width: 25%;
-  }
-  
-  #container-inputs > div{
-    display: flex;
-    gap: 10px;
-  }
-  
-  input{
-    padding: 5px;
-  }
-  
-  table{
-    width: 70% !important;
-    text-align: center;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  #sacar{
-    transform: translate(110px, 10px);
-  }
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
 
-  #primerInput{
-    transform: translate(93px, 10px);
-  }
+header {
+  width: 100%;
+  height: 15vh;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
 
-  #primerLabel{
-    transform: translate(49px, 0px);
-  }
+header img {
+  height: 100%;
+  width: 100vw;
+}
 
-  #container-inputs{
-    width: 100vw;
-  }
+main {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
-  #container-inputs button{
-    transform: translate(-295px, 48px);
-  }
+main div {
+  max-width: 100%;
+}
 
-  #borrar{
-    transform: translate(-141px, -321px);
-  }
+#container-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  width: 25%;
+}
 
-  #formulario{
-    display: flex;
-    flex-direction: column;
-  }
+#container-inputs>div {
+  display: flex;
+  gap: 10px;
+}
 
- 
+input {
+  padding: 5px;
+}
+
+table {
+  width: 70% !important;
+  text-align: center;
+}
+
+#sacar {
+  transform: translate(110px, 10px);
+}
+
+#primerInput {
+  transform: translate(93px, 10px);
+}
+
+#primerLabel {
+  transform: translate(49px, 0px);
+}
+
+#container-inputs {
+  width: 100vw;
+}
+
+#container-inputs button {
+  transform: translate(-295px, 48px);
+}
+
+#borrar {
+  transform: translate(133px, -10px);
+}
+
+#formulario {
+  display: flex;
+  flex-direction: column;
+  margin-top: 38px;
+}
+
+#ejemplo {
+  transform: translate(156px, -39px);
+}

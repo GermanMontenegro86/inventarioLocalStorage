@@ -10,9 +10,11 @@ const volver = document.getElementById("volver");
 
 const sacar = document.getElementById("sacar");
 
+const ejemplo=document.querySelector("#ejemplo");
+
+
 function productoSacar() {
 
-    
     buscado = document.getElementsByName("prod")[0].value.toLowerCase();
 
     const index = arrayProductos.findIndex(x => x.producto === buscado);
@@ -20,15 +22,7 @@ function productoSacar() {
         arrayProductos.splice(index, 1);
         guardarStorage("articulos", arrayProductos)
     }
-
 }
-
-sacar.addEventListener("click", () => {
-    productoSacar();
-
-
-})
-
 class Producto {
     constructor(producto, precio, stock, vto) {
         this.producto = producto;
@@ -48,10 +42,6 @@ function renderizarHtml(array) {
 
     tbody.innerHTML = '';
 
-    // if (array.length === 0) {
-    //     tbody.innerHTML = "<h1 class='mt-5'>No se encontraron resultados</h1>"
-    // }
-
     array.length === 0 ? tbody.innerHTML = "<h1 class='mt-5'>No tenes este producto en tu inventario</h1>" :
 
         array.forEach(({
@@ -65,7 +55,7 @@ function renderizarHtml(array) {
                 `<td>${producto}</td>
          <td>$${precio}</td>
          <td>${stock}</td>
-         <td>${vto}</td>
+         <td style=color:red>${vto}</td>
          `
             tbody.appendChild(tr);
         });
@@ -100,6 +90,14 @@ function guardarStorage(clave, valor) {
 function recuperarStorage(clave) {
     return JSON.parse(localStorage.getItem(clave));
 }
+
+async function traerDatos(){
+    const response= await fetch("./js/data.json");
+    const dato= await response.json();
+    renderizarHtml(dato);
+}
+
+
 nombreProducto.addEventListener('input', () => {
     const encontrados = arrayProductos.filter(({
         producto
@@ -114,13 +112,17 @@ filtrar.addEventListener('click', () => {
     const hasta = document.querySelector('#hasta').value;
 
     const encontrados = arrayProductos.filter(({
-        precio
+        stock
     }) => {
-        return Number(precio) >= desde && Number(precio) <= hasta;
+        return Number(stock) >= desde && Number(stock) <= hasta;
     });
     renderizarHtml(encontrados);
 
 
+})
+
+ejemplo.addEventListener("click", ()=>{
+    traerDatos();
 })
 
 if (recuperarStorage('articulos')) {
@@ -130,6 +132,11 @@ if (recuperarStorage('articulos')) {
 
 volver.addEventListener("click", () => {
     document.location.reload();
+})
+
+sacar.addEventListener("click", () => {
+    productoSacar();
+
 })
 
 formulario.addEventListener('submit', obtenerDatos);

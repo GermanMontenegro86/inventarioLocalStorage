@@ -1,0 +1,38 @@
+[
+    {
+        "producto": "yerba",
+        "precio": "250",
+        "stock": "10",
+        "vto": "2022-09-04"
+    },
+
+    {
+        "producto": "fideos",
+        "precio": "300",
+        "stock": "60",
+        "vto": "2022-09-04"
+    },
+
+    {
+        "producto": "cerveza",
+        "precio": "320",
+        "stock": "40",
+        "vto": "2022-09-04"
+    },
+
+    {
+        "producto": "mayonesa",
+        "precio": "180",
+        "stock": "20",
+        "vto": "2022-09-04"
+    },
+
+    {
+        "producto": "azucar",
+        "precio": "120",
+        "stock": "25",
+        "vto": "2022-09-04"
+    }
+
+
+]
